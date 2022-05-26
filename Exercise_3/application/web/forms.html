@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Simple DB App</title>
+        <script>
+            function submitForm(form, method) {
+                var vals = [];
+                
+                for (var n=0; n < form.elements.length; n++) {
+                    if(form.elements[n].className === 'toSubmit') {
+                        vals.push(form.elements[n].name + "=" + form.elements[n].value);
+                    }
+                }
+                
+                window.parent.document.getElementById('resultsFrame').contentWindow.location = method + "?" + vals.join("&");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <table width="100%" height="100%"  border='2'>
+            <tr>
+                <td>
+                    <h2>Most common symptoms</h2>
+                    <form>
+                        Vax name: <input type="text" class="toSubmit" name="vax_name" /><br />
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'mostcommonsymptoms')" />
+                    </form>
+                </td>
+
+                <td>
+                    <h2>Patient report</h2>
+                    <form>
+                        Patient: <input type="text" class="toSubmit" name="patientName" /><br />
+						 
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'patientreport')" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+			    <td>
+                    <h2>Βuild a new block</h2>
+                    <form>
+                        blockfloor : <input type="text" class="toSubmit" name="blockfloor" /><br />                         
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'buildnewblock')" />
+                    </form>
+                </td>
+                <td>
+                    <h2>Find nurse</h2>
+                    <form>
+                        Floor: <input type="text" class="toSubmit" name="x" /><br /> 
+						Number of patients: <input type="text" class="toSubmit" name="y" /><br /> 						
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'findnurse')" />
+                    </form>
+                </td>
+            </tr>
+			 
+        </table>
+    </body>
+</html>
